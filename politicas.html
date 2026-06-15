@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Políticas Corporativas — AENZA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,700;1,800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#fff;color:#0a0a12;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{border:none;background:none;cursor:none;font-family:inherit}
+:root{
+  --blue:#0345F5;--blue2:#0234c8;--ink:#0a0a12;
+  --body:#3a3a52;--light:#6e6e88;--rule:#eaeaf2;
+  --surface:#f6f6f9;
+  --sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+  --spring:cubic-bezier(.16,1,.3,1);
+  --max:1200px;--nav:68px;
+}
+#cursor{position:fixed;inset:0;z-index:9999;pointer-events:none}
+#c-dot{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--blue);transform:translate(-50%,-50%)}
+#c-ring{position:absolute;width:34px;height:34px;border:1.5px solid rgba(3,69,245,.35);border-radius:50%;transform:translate(-50%,-50%);transition:width .4s var(--spring),height .4s var(--spring)}
+body.over-dark #c-dot{background:#fff}
+body.over-dark #c-ring{border-color:rgba(255,255,255,.4)}
+#nav{position:fixed;top:0;left:0;right:0;z-index:800;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:background .4s,box-shadow .4s}
+#nav.solid{background:rgba(255,255,255,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--rule)}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:.92rem;letter-spacing:.05em;color:#fff;transition:color .4s}
+#nav.solid .nav-logo{color:var(--ink)}
+.nav-logo-img{height:52px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);transition:filter .4s}
+#nav.solid .nav-logo-img{filter:none}
+.nav-logo-mark{display:none}
+.nav-links{display:none}
+@media(min-width:1081px){.nav-links{display:flex;align-items:center;gap:6px;list-style:none}}
+.nav-links>li>a{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:7px 14px;border-radius:4px;transition:color .25s,background .25s}
+#nav.solid .nav-links>li>a{color:#6e6e88}
+.nav-links>li>a:hover{color:#fff;background:rgba(255,255,255,.08)}
+#nav.solid .nav-links>li>a:hover{color:var(--blue);background:rgba(3,69,245,.06)}
+.nav-btn-secondary{display:inline-flex;align-items:center;gap:9px;padding:10px 20px;border-radius:6px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;transition:background .25s}
+#nav.solid .nav-btn-secondary{background:rgba(9,9,15,.07);color:var(--ink)}
+.nav-dir-icon{display:grid;grid-template-columns:1fr 1fr;gap:2.5px}
+.nav-dir-icon span{display:block;width:4px;height:4px;border-radius:1px;background:currentColor;opacity:.7}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:4px;background:var(--blue);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;transition:background .22s}
+.nav-cta:hover{background:var(--blue2)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.ic{display:block}
+@keyframes heroZ{to{transform:scale(1);filter:brightness(.44) saturate(.9)}}
+
+/* ═══ HERO ═══ */
+.pol-hero{
+  position:relative;height:56vh;min-height:420px;
+  overflow:hidden;background:#06080f;
+  display:flex;align-items:flex-end;
+}
+.pol-hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1800&auto=format&fit=crop&q=85') center/cover;
+  filter:brightness(.32) saturate(.6);
+  transform:scale(1.06);
+  animation:heroZ 1.8s cubic-bezier(.16,1,.3,1) forwards;
+}
+.pol-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,14,.95) 0%,rgba(6,6,14,.2) 60%,transparent 100%),linear-gradient(to right,rgba(6,6,14,.5) 0%,transparent 55%)}
+.pol-hero-content{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:0 52px 72px;width:100%}
+.pol-hero-eyebrow{display:flex;align-items:center;gap:10px;font-size:.6rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
+.pol-hero-eyebrow span{width:20px;height:1px;background:var(--blue);display:block}
+.pol-hero h1{font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line-height:1.04;letter-spacing:-.035em;color:#fff;margin-bottom:14px}
+.pol-hero h1 em{font-family:var(--serif);font-style:italic;color:var(--blue)}
+.pol-hero-sub{font-size:.95rem;color:rgba(255,255,255,.45);max-width:480px;line-height:1.7}
+
+/* ═══ INTRO STRIP ═══ */
+.pol-intro{
+  background:#fff;
+  border-bottom:1px solid var(--rule);
+  padding:52px 0;
+}
+.pol-intro-inner{
+  max-width:var(--max);margin:0 auto;padding:0 52px;
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+}
+.pol-intro-left h2{font-size:clamp(1.6rem,2.4vw,2.2rem);font-weight:800;letter-spacing:-.025em;color:var(--ink);line-height:1.15;margin-bottom:0}
+.pol-intro-left h2 em{font-family:var(--serif);font-style:italic;color:var(--blue)}
+.pol-intro-right p{font-size:.95rem;line-height:1.82;color:var(--body)}
+.pol-stat-row{display:flex;gap:40px;margin-top:24px}
+.pol-stat-val{font-size:2rem;font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.pol-stat-label{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--light);margin-top:4px}
+
+/* ═══ GRID DE POLÍTICAS ═══ */
+.pol-main{background:var(--surface);padding:72px 0 96px}
+.pol-main-head{max-width:var(--max);margin:0 auto;padding:0 52px 48px;display:flex;justify-content:space-between;align-items:flex-end}
+.pol-main-head .label{color:var(--blue);margin-bottom:8px}
+.pol-main-head .label::before{background:var(--blue)}
+.pol-main-head h2{font-size:clamp(1.6rem,2.4vw,2.2rem);font-weight:800;letter-spacing:-.025em;color:var(--ink)}
+.pol-main-head h2 em{font-family:var(--serif);font-style:italic;color:var(--blue)}
+.pol-count{font-size:.8rem;color:var(--light);text-align:right}
+.pol-count strong{font-size:2rem;font-weight:800;color:var(--ink);display:block;letter-spacing:-.04em;line-height:1}
+
+.pol-grid{
+  max-width:var(--max);margin:0 auto;padding:0 52px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+/* ═══ CARD ═══ */
+.pol-card{
+  background:#fff;border-radius:16px;overflow:hidden;
+  border:1px solid var(--rule);
+  display:flex;flex-direction:column;
+  transition:transform .4s var(--spring),box-shadow .4s var(--spring),border-color .3s;
+}
+.pol-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 48px rgba(9,9,15,.09);
+  border-color:rgba(3,69,245,.15);
+}
+
+/* Header coloreado */
+.pol-card-header{
+  padding:28px 28px 24px;
+  background:var(--surface);
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:flex-start;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.pol-card-header::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--cat-color,var(--blue));
+}
+.pol-card-ico{
+  width:48px;height:48px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cat-color,var(--blue));
+  background:rgba(255,255,255,.9);
+  border:1px solid rgba(0,0,0,.08);
+  transition:transform .35s var(--spring),box-shadow .35s;
+}
+.pol-card:hover .pol-card-ico{
+  transform:translateY(-3px) rotate(-6deg);
+  box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+.pol-card-num{
+  font-size:2.8rem;font-weight:800;letter-spacing:-.06em;
+  color:rgba(0,0,0,.06);line-height:1;
+}
+
+/* Body */
+.pol-card-body{padding:24px 28px 28px;flex:1;display:flex;flex-direction:column}
+.pol-card-cat{
+  font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--cat-color,var(--blue));margin-bottom:20px;
+  display:flex;align-items:center;gap:7px;
+}
+.pol-card-cat::before{content:'';width:14px;height:1.5px;background:currentColor}
+
+/* Doc list */
+.pol-doc-list{display:flex;flex-direction:column;gap:4px;flex:1}
+.pol-doc{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:8px;
+  text-decoration:none;
+  transition:background .22s,transform .22s var(--spring);
+  position:relative;overflow:hidden;
+}
+.pol-doc::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--cat-color,var(--blue));
+  transform:scaleY(0);transform-origin:bottom;
+  transition:transform .35s var(--spring);
+}
+.pol-doc:hover{background:var(--surface);transform:translateX(4px)}
+.pol-doc:hover::before{transform:scaleY(1)}
+.pol-doc-ico{
+  width:30px;height:30px;border-radius:7px;flex-shrink:0;
+  background:rgba(3,69,245,.07);border:1px solid rgba(3,69,245,.15);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--blue);
+  transition:background .22s,border-color .22s,color .22s;
+}
+.pol-doc:hover .pol-doc-ico{background:var(--blue);border-color:var(--blue);color:#fff}
+.pol-doc-name{
+  font-size:.8rem;font-weight:500;color:var(--body);
+  flex:1;line-height:1.4;
+  transition:color .22s;
+}
+.pol-doc:hover .pol-doc-name{color:var(--ink)}
+.pol-doc-arrow{
+  color:var(--light);flex-shrink:0;
+  opacity:0;transform:translateX(-4px);
+  transition:opacity .25s,transform .25s var(--spring),color .22s;
+}
+.pol-doc:hover .pol-doc-arrow{opacity:1;transform:translateX(0);color:var(--blue)}
+
+/* ═══ CTA BAND ═══ */
+.pol-cta{
+  background:var(--blue);padding:88px 0;
+  position:relative;overflow:hidden;text-align:center;
+}
+.pol-cta::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 48px,rgba(255,255,255,.025) 48px,rgba(255,255,255,.025) 49px)}
+.pol-cta-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:rgba(255,255,255,.07);filter:blur(80px);pointer-events:none}
+.pol-cta-inner{position:relative;z-index:1}
+.pol-cta-sup{font-size:.6rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px}
+.pol-cta-h{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.025em;margin-bottom:40px;max-width:580px;margin-left:auto;margin-right:auto}
+.pol-cta-h em{font-family:var(--serif);font-style:italic;color:rgba(255,255,255,.8)}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);padding:14px 32px;border-radius:6px;font-size:.74rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;transition:transform .22s,box-shadow .22s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,.18)}
+
+/* ═══ FOOTER ═══ */
+#footer{background:#07080f;padding:0;display:block;visibility:visible}
+.ft-top-bar{display:flex;align-items:center;justify-content:space-between;padding:32px 52px;border-bottom:1px solid rgba(255,255,255,.06)}
+.ft-logo-big{display:flex;align-items:center;gap:12px;font-size:1.6rem;font-weight:800;letter-spacing:.06em;color:#fff}
+.ft-tagline-italic{font-size:.82rem;font-style:italic;color:rgba(255,255,255,.35);font-family:var(--serif);margin-top:4px}
+.ft-top-right{display:flex;align-items:center;gap:12px}
+.ft-contact-btn{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:12px 28px;border-radius:4px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .22s}
+.ft-contact-btn:hover{background:var(--blue2)}
+.ft-social-row{display:flex;gap:8px}
+.ft-social-row a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);transition:border-color .22s,color .22s}
+.ft-social-row a:hover{border-color:var(--blue);color:var(--blue)}
+.ft-cols-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,.06)}
+.ft-col-v2{padding:40px 52px;border-right:1px solid rgba(255,255,255,.06)}
+.ft-col-v2:last-child{border-right:none}
+.ft-col-v2 h5{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
+.ft-col-v2 ul{list-style:none}
+.ft-col-v2 li{margin-bottom:11px}
+.ft-col-v2 a{font-size:.82rem;color:rgba(255,255,255,.5);transition:color .22s;display:inline-block}
+.ft-col-v2 a:hover{color:#fff}
+.ft-contact-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
+.ft-contact-row svg{flex-shrink:0;margin-top:1px;color:var(--blue)}
+.ft-contact-row span,.ft-contact-row a{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.55;display:block}
+.ft-bottom-bar{display:flex;justify-content:space-between;align-items:center;padding:18px 52px}
+.ft-bottom-bar p,.ft-bottom-bar a{font-size:.68rem;color:rgba(255,255,255,.2);font-style:italic}
+
+@media(max-width:1080px){
+  .pol-grid{grid-template-columns:1fr 1fr;padding:0 36px}
+  .pol-intro-inner{grid-template-columns:1fr;gap:32px;padding:0 36px}
+  .pol-hero-content,.pol-main-head{padding:0 36px 48px}
+  .pol-main-head{padding-bottom:40px}
+  .ft-cols-grid{grid-template-columns:1fr 1fr}
+  .ft-col-v2{padding:32px 36px}
+  .ft-top-bar,.ft-bottom-bar{padding:28px 36px}
+}
+@media(max-width:680px){
+  .pol-grid{grid-template-columns:1fr;padding:0 22px}
+  .pol-hero-content{padding:0 22px 56px}
+  .pol-intro-inner{padding:0 22px}
+  .pol-main-head{padding:0 22px 36px}
+  .pol-stat-row{flex-wrap:wrap;gap:24px}
+  .ft-cols-grid{grid-template-columns:1fr}
+  .ft-col-v2{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:28px 22px}
+  .ft-top-bar{flex-direction:column;align-items:flex-start;gap:20px;padding:24px 22px}
+  .ft-bottom-bar{padding:14px 22px;flex-direction:column;gap:6px;align-items:flex-start}
+}
+</style>
+</head>
+<body class="over-dark">
+<div id="cursor"><div id="c-dot"></div><div id="c-ring"></div></div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo nav-logo-has-img">
+    <!-- Un solo logo — pon tu archivo aquí. Se vuelve blanco sobre hero y oscuro al hacer scroll -->
+    <img class="nav-logo-img single" src="logo-aenza.png" alt="AENZA"
+         onerror="this.style.display='none'"/>
+    <!-- Fallback SVG si no hay imagen -->
+    <svg class="nav-logo-mark" width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <path d="M2 26L14 2L26 26" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+      <line x1="19" y1="17" x2="27" y2="5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <span class="nav-logo-text" style="display:none">AENZA</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#quienes">Quiénes Somos</a></li>
+    <li><a href="https://investorrelations.aenza.com.pe/es" target="_blank">Inversionistas</a></li>
+    <li><a href="#noticias">Noticias</a></li>
+    <li><a href="https://www.canaletico.net/" target="_blank">Línea Ética</a></li>
+    <li><a href="https://www.aenza.com.pe/politicas/" target="_blank">Políticas</a></li>
+    <li><a href="https://www.aenza.com.pe/sostenibilidad/" target="_blank">Sostenibilidad</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="https://investorrelations.aenza.com.pe/gobierno-corporativo/directorio" target="_blank" class="nav-btn-secondary">
+      <span class="nav-dir-icon"><span></span><span></span><span></span><span></span></span>
+      Directorio
+    </a>
+    <a href="https://www.aenza.com.pe/contactenos/aenza/?subject=AENZA" target="_blank" class="nav-cta">
+      Contáctenos
+      <svg class="ic" width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 5h8M5 1l4 4-4 4"/></svg>
+    </a>
+    <button class="hb" id="hb" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<div class="pol-hero">
+  <div class="pol-hero-bg"></div>
+  <div class="pol-hero-content">
+    <div class="pol-hero-eyebrow"><span></span>AENZA · Gobernanza</div>
+    <h1>Políticas <em>corporativas</em></h1>
+    <p class="pol-hero-sub">El marco de principios, valores y compromisos que guían cada decisión del Grupo AENZA y sus empresas.</p>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="pol-intro">
+  <div class="pol-intro-inner">
+    <div class="pol-intro-left">
+      <h2>Gobernamos con <em>ética</em><br>y transparencia</h2>
+    </div>
+    <div class="pol-intro-right">
+      <p>Nuestras políticas corporativas establecen los estándares de conducta, sostenibilidad, seguridad y gestión que aplican en todas las unidades de negocio del grupo. Son la base de nuestra cultura de integridad y cumplimiento.</p>
+      <div class="pol-stat-row">
+        <div>
+          <div class="pol-stat-val">24</div>
+          <div class="pol-stat-label">Documentos corporativos</div>
+        </div>
+        <div>
+          <div class="pol-stat-val">6</div>
+          <div class="pol-stat-label">Áreas de gestión</div>
+        </div>
+        <div>
+          <div class="pol-stat-val">100%</div>
+          <div class="pol-stat-label">Aplicación en el grupo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="pol-main">
+  <div class="pol-main-head">
+    <div>
+      <div class="label">Marco normativo</div>
+      <h2>Nuestros <em>documentos</em></h2>
+    </div>
+    <div class="pol-count">
+      <strong>24</strong>
+      documentos disponibles para descarga
+    </div>
+  </div>
+  <div class="pol-grid">
+    <div class="pol-card">
+      <div class="pol-card-header" style="--cat-color:#0345F5">
+        <div class="pol-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="pol-card-num">01</div>
+      </div>
+      <div class="pol-card-body">
+        <div class="pol-card-cat">Conducta y Ética</div>
+        <div class="pol-doc-list">
+        <a href="https://www.aenza.com.pe/media/skvfsyux/código-de-conducta-de-negocios-_v5.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Código de Conducta de Negocios</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/elldjeio/código-de-conducta-del-proveedor.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Código de Conducta del Proveedor</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/k0po5sai/política-corporativa-de-gestión-de-denuncias.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política Corporativa de Gestión de Denuncias</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/lhdoyur1/política-de-prácticas-comerciales-responsables.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política de Prácticas Comerciales Responsables</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        </div>
+      </div>
+    </div>    <div class="pol-card">
+      <div class="pol-card-header" style="--cat-color:#16a34a">
+        <div class="pol-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg>
+        </div>
+        <div class="pol-card-num">02</div>
+      </div>
+      <div class="pol-card-body">
+        <div class="pol-card-cat">Sostenibilidad y Medio Ambiente</div>
+        <div class="pol-doc-list">
+        <a href="https://www.aenza.com.pe/media/cgnpdoht/política-de-sostenibilidad.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política de Sostenibilidad</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/qwse4igs/política-de-medio-ambiente.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política de Medio Ambiente</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/05dfi4hn/política-de-gestión-social.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política de Gestión Social</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/ie3nytrw/brochure-esg.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Brochure ESG</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/da0keqlt/esg-2024-key-sustainability-indicators.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">ESG 2024: Key Sustainability Indicators</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        </div>
+      </div>
+    </div>    <div class="pol-card">
+      <div class="pol-card-header" style="--cat-color:#7c3aed">
+        <div class="pol-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="pol-card-num">03</div>
+      </div>
+      <div class="pol-card-body">
+        <div class="pol-card-cat">Derechos Humanos y Laboral</div>
+        <div class="pol-doc-list">
+        <a href="https://www.aenza.com.pe/media/zr1j0143/política-de-derechos-humanos.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política de Derechos Humanos</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/kfvb5cea/evaluación-de-derechos-humanos.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Evaluación de Derechos Humanos</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/01alidz4/política-de-diversidad-inclusión-y-equidad.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política de Diversidad, Inclusión y Equidad</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/qicfec5i/política-para-prevenir-y-sancionar-el-hostigamiento-sexual.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política para Prevenir y Sancionar el Hostigamiento Sexual</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/ndzhzh5n/declaración-de-compromiso-con-el-respeto-de-derechos-laborales.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Declaración de Compromiso con el Respeto de Derechos Laborales</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        </div>
+      </div>
+    </div>    <div class="pol-card">
+      <div class="pol-card-header" style="--cat-color:#dc2626">
+        <div class="pol-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="pol-card-num">04</div>
+      </div>
+      <div class="pol-card-body">
+        <div class="pol-card-cat">Seguridad y Gestión</div>
+        <div class="pol-doc-list">
+        <a href="https://www.aenza.com.pe/media/cumfylm0/política-de-seguridad-y-salud-en-el-trabajo.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política de Seguridad y Salud en el Trabajo</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/ghrhawic/política-de-gestión-integral-de-riesgos.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política de Gestión Integral de Riesgos</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/ehjizpqk/política-del-sistema-de-gestión-corporativo.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política del Sistema de Gestión Corporativo</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/nsjdkirw/política-corporativa-de-seguridad-de-la-información.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política Corporativa de Seguridad de la Información</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/birdardt/política-desconexión-digital.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Política Desconexión Digital</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        </div>
+      </div>
+    </div>    <div class="pol-card">
+      <div class="pol-card-header" style="--cat-color:#0891b2">
+        <div class="pol-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="pol-card-num">05</div>
+      </div>
+      <div class="pol-card-body">
+        <div class="pol-card-cat">Cadena de Suministro</div>
+        <div class="pol-doc-list">
+        <a href="https://www.aenza.com.pe/media/ipqbfefe/responsible-supply-chain-management-2024.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Responsible Supply Chain Management 2024</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/2ghn5zml/sustentos-para-la-recepción-de-servicios.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Sustentos para la Recepción de Servicios</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/yrgj0wrt/donaciones.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Donaciones</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        </div>
+      </div>
+    </div>    <div class="pol-card">
+      <div class="pol-card-header" style="--cat-color:#d97706">
+        <div class="pol-card-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="pol-card-num">06</div>
+      </div>
+      <div class="pol-card-body">
+        <div class="pol-card-cat">Gobierno Corporativo</div>
+        <div class="pol-doc-list">
+        <a href="https://www.aenza.com.pe/media/50uplart/responsible-human-rights-management-2024.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Responsible Human Rights Management 2024</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>        <a href="https://www.aenza.com.pe/media/nnbos4my/responsible-corporate-risk-management-2024.pdf" target="_blank" class="pol-doc">
+          <div class="pol-doc-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="pol-doc-name">Responsible Corporate Risk Management 2024</span>
+          <svg class="pol-doc-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="pol-cta">
+  <div class="pol-cta-glow"></div>
+  <div class="container pol-cta-inner">
+    <div class="pol-cta-sup">Canal Ético · AENZA S.A.A.</div>
+    <h2 class="pol-cta-h">¿Tienes alguna denuncia o<br>consulta <em>ética</em>?</h2>
+    <a href="https://www.canaletico.net/" target="_blank" class="btn-white">
+      Acceder al Canal Ético
+      <svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 5h8M5 1l4 4-4 4"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="footer">
+
+  <!-- Top bar: logo + cta + social -->
+  <div class="ft-top-bar">
+    <div>
+      <div class="ft-logo-big">
+        <img src="logo-aenza.png" alt="AENZA" style="height:72px;width:auto;object-fit:contain;filter:brightness(0) invert(1);">
+      </div>
+      <div class="ft-tagline-italic">Construyendo el futuro del Perú desde hace más de 70 años.</div>
+    </div>
+    <div class="ft-top-right">
+      <a href="https://www.aenza.com.pe/contactenos/aenza/?subject=AENZA" target="_blank" class="ft-contact-btn">
+        CONTÁCTENOS
+        <svg class="ic" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 5h8M5 1l4 4-4 4"/></svg>
+      </a>
+      <div class="ft-social-row">
+        <a href="https://www.linkedin.com/company/72189954" target="_blank" aria-label="LinkedIn">
+          <svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7H10v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.aenza.com.pe" target="_blank" aria-label="Sitio web">
+          <svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Columns -->
+  <div class="ft-cols-grid">
+
+    <div class="ft-col-v2">
+      <h5>Navegación</h5>
+      <ul>
+        <li><a href="#quienes">Conócenos</a></li>
+        <li><a href="#empresas">Nuestras Empresas</a></li>
+        <li><a href="#concesionarias">Concesionarias</a></li>
+        <li><a href="#noticias">Noticias</a></li>
+        <li><a href="https://www.aenza.com.pe/sostenibilidad/" target="_blank">Sostenibilidad</a></li>
+      </ul>
+    </div>
+
+    <div class="ft-col-v2">
+      <h5>Empresas</h5>
+      <ul>
+        <li><a href="https://www.unna.com.pe" target="_blank">UNNA Infraestructura</a></li>
+        <li><a href="https://www.unnaenergia.com.pe" target="_blank">UNNA Energía</a></li>
+        <li><a href="http://www.viva.com.pe" target="_blank">VIVA</a></li>
+        <li><a href="http://www.lineauno.pe/" target="_blank">Línea 1</a></li>
+        <li><a href="http://www.norvial.com.pe/" target="_blank">Norvial</a></li>
+        <li><a href="http://www.survial.com.pe/" target="_blank">Survial</a></li>
+      </ul>
+    </div>
+
+    <div class="ft-col-v2">
+      <h5>Inversionistas</h5>
+      <ul>
+        <li><a href="https://investorrelations.aenza.com.pe/es" target="_blank">Relación con Inversionistas</a></li>
+        <li><a href="https://investorrelations.aenza.com.pe/gobierno-corporativo/directorio" target="_blank">Nuestro Directorio</a></li>
+        <li><a href="https://www.canaletico.net/" target="_blank">Línea Ética</a></li>
+        <li><a href="https://www.aenza.com.pe" target="_blank">Políticas</a></li>
+      </ul>
+    </div>
+
+    <div class="ft-col-v2">
+      <h5>Contacto</h5>
+      <div class="ft-contact-row">
+        <svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span>Av. Petit Thouars Nº 4957,<br>Miraflores 15047, Lima, Perú.</span>
+      </div>
+      <div class="ft-contact-row">
+        <svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.89"/></svg>
+        <a href="tel:+5112130300">+51 (1) 213 0300</a>
+      </div>
+      <div class="ft-contact-row">
+        <svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:contactenos@aenza.com.pe">contactenos@aenza.com.pe</a>
+      </div>
+      <div class="ft-contact-row">
+        <svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        <a href="https://www.canaletico.net/" target="_blank">Canal Ético</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class="ft-bottom-bar">
+    <p>© 2025 <a href="https://www.aenza.com.pe" target="_blank">AENZA S.A.A.</a> — Todos los derechos reservados.</p>
+    <p>Lima · Perú</p>
+  </div>
+
+</footer>
+
+
+
+<script>
+const cdot=document.getElementById('c-dot'),cring=document.getElementById('c-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function loop(){cdot.style.cssText=`left:${mx}px;top:${my}px`;rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cring.style.cssText=`left:${rx}px;top:${ry}px`;requestAnimationFrame(loop)})();
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{const on=scrollY>50;nav.classList.toggle('solid',on);document.body.classList.toggle('over-dark',!on)},{passive:true});
+</script>
+</body>
+</html>
